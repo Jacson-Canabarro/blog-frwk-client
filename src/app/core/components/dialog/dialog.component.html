@@ -1,0 +1,24 @@
+
+<div class="form">
+  <img [src]="url" height="200" alt="image" *ngIf="url"> <br/>
+  <label for="arquivo">Selecione uma Imagem</label>
+  <mat-error *ngIf="urlImg.invalid">{{getErrorMessage()}}</mat-error>
+  <input type='file' name="arquivo" id="arquivo" (change)="onSelectFile($event)" required="required">
+
+  <mat-form-field appearance="outline" style="width: 100%">
+    <mat-label>Titulo</mat-label>
+    <input matInput  [formControl]="title" required>
+    <mat-error *ngIf="title.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="width: 100%">
+    <textarea matInput placeholder="Ex. Adoro meu dia..." [formControl]="text" required></textarea>
+    <mat-error *ngIf="text.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline" style="width: 100%">
+    <mat-label>Link</mat-label>
+    <input matInput  [formControl]="link" required>
+    <mat-error *ngIf="link.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="onSubmit()" style="width: 50%; align-self: center">Cadastrar</button>
+</div>
+

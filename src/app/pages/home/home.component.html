@@ -1,0 +1,25 @@
+<div class="flex-container">
+
+  <mat-card class="card-post" *ngFor="let post of posts">
+    <mat-card-header>
+      <mat-card-title>{{post.title}}</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="post.imgSource" alt="Photo of a Shiba Inu" >
+    <mat-card-content>
+      <p>
+        {{post.text}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-icon-button  matTooltip="Deletar essa postagem" color="warn"  *appIfAuth="post.userId"   (click)="deletePost(post.userId, post.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+      <a mat-button [href]="post.link">Link</a>
+      <button mat-button matBadge="{{post.comments?.length}}" matBadgePosition="after" matBadgeColor="primary" (click)="openBottomSheet(userLogged.id, post.id, post.comments)"  matTooltip="Ver comentários">Comentários</button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>
+
+
+
